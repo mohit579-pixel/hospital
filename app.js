@@ -5,7 +5,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 require('dotenv').config();
-const dbUrl = "mongodb+srv://22511291dypit:T2lSmNyTE70qyyDD@cluster0.kduxgmj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"; // Replace with your actual database URL
+const dbUrl = "mongodb+srv://22511291dypit:T2lSmNyTE70qyyDD@cluster0.kduxgmj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";; // Replace with your actual database URL
 const Listing = require("./models/listing.js");
 const Ambulance = require("./models/amb.js");
 const user = require("./models/user.js");
