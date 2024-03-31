@@ -1,0 +1,77 @@
+<header class="header">
+
+    <!-- <div class="header-top">
+      <div class="container">
+
+
+
+      </div>
+    </div> -->
+
+    <div class="header-bottom" data-header>
+        <div class="container">
+
+            <a href="#" class="logo" style="color:white">
+                Astra Medica
+                <span class="span">Book your appoinment here </span>
+            </a>
+
+            <nav class="navbar container" data-navbar>
+                <ul class="navbar-list">
+
+                    <li class="navbar-item">
+                        <a href="/home" class="navbar-link"
+                            data-nav-link>Home</a>
+                    </li>
+                    <% if(!currUser) {%>
+                    <li class="navbar-item">
+                        <a href="#services" class="navbar-link"
+                            data-nav-link>Services</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="/appointment" class="navbar-link"
+                            data-nav-link>Appointment</a>
+                    </li><% } %>
+
+
+                    <% if(currUser) {%>
+                        <li class="navbar-item">
+                            <a href="/ambulance" class="navbar-link"
+                                data-nav-link>Ambulance</a>
+                        </li>
+    
+                        <li class="navbar-item">
+                            <a href="/appointment" class="navbar-link"
+                                data-nav-link>Appointment</a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="/appointment" class="navbar-link"
+                                data-nav-link>Video</a>
+                        </li>
+                        <% } %>
+
+                </ul>
+            </nav>
+
+            <button class="nav-toggle-btn" aria-label="toggle menu"
+                data-nav-toggler>
+                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+            </button>
+            <% if(!currUser) {%>
+            <a href="/login" class="btn has-before">
+                <span class="span">Login</span>
+            </a>
+            <% } %>
+            <% if(currUser) {%>
+            </a>
+            <a href="/logout" class="btn has-before bg-danger">
+                <span class="span">Logout</span>
+            </a>
+            <% } %>
+
+        </div>
+    </div>
+
+</header>

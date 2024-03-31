@@ -1,0 +1,182 @@
+<% layout("/layout/boilerplate.ejs") %>
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #000000; /* fallback color: black */
+        
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to bottom right, #333333, #000000);
+        
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to bottom right, #333333, #000000);
+    }
+    
+    
+    
+    
+        .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+        }
+        .card-registration .select-arrow {
+        top: 13px;
+        }
+        
+</style>
+<body class="gradient-custom">
+    
+
+<section class="vh-100 " style="position: relative;top:100px">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration"
+                    style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration
+                            Form</h3>
+                        <form method="post" action="/appointment"  enctype="multipart/form-data">
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <input type="text" id="firstName"
+                                            class="form-control form-control-lg"
+                                            name="listing[first]" />
+                                        <label class="form-label"
+                                            for="firstName">First Name</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <input type="text" id="lastName"
+                                            class="form-control form-control-lg"
+                                            name="listing[last]" />
+                                        <label class="form-label"
+                                            for="lastName">Last Name</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div
+                                    class="col-md-6 mb-4 d-flex align-items-center">
+
+                                    <div class="form-outline datepicker w-100">
+                                        <input type="text"
+                                            class="form-control form-control-lg"
+                                            id="birthdayDate"
+                                            name="listing[time]" />
+                                        <label for="age"
+                                            class="form-label">Time</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4">
+
+                                    <h6 class="mb-2 pb-1">Gender: </h6>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input"
+                                            type="radio"
+                                            name="listing[gender]"
+                                            id="femaleGender"
+                                            value="option1" checked />
+                                        <label class="form-check-label"
+                                            for="femaleGender">Female</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input"
+                                            type="radio"
+                                            name="listing[gender]"
+                                            id="maleGender"
+                                            value="option2" />
+                                        <label class="form-check-label"
+                                            for="maleGender">Male</label>
+                                    </div>
+
+                                    <!-- <div class="form-check form-check-inline">
+                                        <input class="form-check-input"
+                                            type="radio"
+                                            name="inlineRadioOptions"
+                                            id="otherGender"
+                                            value="option3" />
+                                        <label class="form-check-label"
+                                            for="otherGender">Other</label>
+                                    </div> -->
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <input type="text" id="emailAddress"
+                                            class="form-control form-control-lg"
+                                            name="listing[email]" />
+                                        <label class="form-label"
+                                            for="emailAddress">Date</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <input type="tel" id="phoneNumber"
+                                            class="form-control form-control-lg" />
+                                        <label class="form-label"
+                                            for="phoneNumber">Phone
+                                            Number</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="form-outline datepicker w-100">
+                                        <input type="text"
+                                            class="form-control form-control-lg"
+                                            id="birthdayDate"
+                                            style="height: 100px; width: 300px;"
+                                            placeholder="Enter your Description " />
+
+                                        <label for="age"
+                                            class="form-label">Description of <p
+                                                class="text-danger"
+                                                style="display: inline-block;">DISEASE</p></label>
+                                    </div>
+                                    <!-- <label class="form-label select-label">Choose option</label> -->
+                                    <div class="form-outline datepicker w-100">
+                                        <input type="file"
+                                            class="form-control form-control-lg"
+                                            id="birthdayDate"
+                                            name="listing[image]" />
+                                        <label for="age"
+                                            class="form-label">Prescription</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-2">
+                                <input class="btn btn-primary btn-lg"
+                                    type="submit" value="Submit" />
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>

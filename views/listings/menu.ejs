@@ -1,0 +1,279 @@
+<% layout("/layout/boilerplate.ejs") %>
+
+  <style>
+    /* Add your existing styles here */
+
+    /* Sticky bar styles */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      margin: auto;
+      text-align: center;
+      background-color: black;
+      color: white;
+      padding: 10px;
+      display: none;
+      font-size: large;
+      
+    }
+    .h1 .btn{
+        background-color: black;
+    }
+    .menu h1{
+        font-size: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    .menu h1 span{
+        color: #fac031;
+        margin-left: 15px;
+        font-family: mv boli;
+    }
+    
+    .menu h1 span::after{
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #fac031;
+        display: block;
+        position: relative;
+        bottom: 15px;
+    }
+    .card{
+      background-image: url("https://res.cloudinary.com/dymfsdc1w/image/upload/v1704097196/Foody/bg-p_tlfdsy.jpg");
+    }
+    .card1{
+        backdrop-filter: blur(2px) saturate(196%); 
+        -webkit-backdrop-filter: blur(2px) saturate(196%); 
+        background-color: rgba(255,255,255, 0.75); 
+        border-radius:  26px; 
+        border: 1px solid rgba(209, 213, 219, 0.18); 
+        }
+    .card,.card-body{
+        overflow: hidden;
+        border: 0;
+        background-color: black;
+    }
+    .card-img-top {
+        transition: transform 776ms ease-out;
+    }
+    .wrapperl{
+        background-color: black;
+        background-image: url("https://res.cloudinary.com/dymfsdc1w/image/upload/v1702653564/wanderlust_DEV/handrawn-barbecue-elements_125540-588-removebg-preview_mdkri1.png")
+    }
+    .card-img-top:hover {
+        transform: translate(0px, 0px) scale(1.1, 1.1);
+    }
+
+    .slidebar{
+      border-radius: 7px;
+      
+      margin-right: 3rem;
+      padding: 1rem;
+      
+      align-content: center;
+      text-align: center;
+      display: flex;
+      align-items: center;
+    }
+    .txt1{
+
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <style>
+    /* Add your existing styles here */
+  </style>
+
+  <div class="wrapperl pt-2  ">
+    <div class="col mb-4 text-muted menu ">
+      <h1 class="text-light">Our <span>Menu</span></h1>
+      <div class="col">
+      <% if (email === "mohitkhandelwal579@gmail.com") { %>
+        <a href="/menu/new" class="btn btn-success">Add</a>
+      <% } %>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="slidebar col">
+          <div class="row">
+          <div class="col-4"> 
+            <img class="bg-white img-thumbnail " src="https://res.cloudinary.com/dymfsdc1w/image/upload/v1704100280/Foody/features-icon-3_b9n2sc.png">
+          </div>
+          <div class="col-8 txt1 text-center  text-warning choose">
+
+            <span class="choose">Breakfast</span>
+          </div>
+        </div>
+        </div>
+        <div class="slidebar col"><div class="row">
+          <div class="col-4"> 
+            <img src="https://res.cloudinary.com/dymfsdc1w/image/upload/v1704100458/Foody/features-icon-1-removebg-preview_piywzv.png" alt="..." class="img-thumbnail ">
+          </div>
+          <div class="col-8 txt1 text-warning">
+
+            <span class="choose">Drinks</span>
+          </div>
+        </div></div>
+        <div class="slidebar col"><div class="row">
+          <div class="col-4"> 
+            <img src="https://res.cloudinary.com/dymfsdc1w/image/upload/v1704100143/Foody/features-icon-2_crzn3q.png" alt="..." class="img-thumbnail ">
+          </div>
+          <div class="col-8 txt1 text-warning">
+
+            <span class="choose">Lunch</span>
+          </div>
+        </div></div>
+      </div>
+    </div>
+
+
+
+
+
+    </div>
+    <div class="container-fluid ">
+      <div class="row ">
+        <% for(let listing of allisting){%>
+        <div class="col-lg-3 col-md-6 col-sm-6 mb-3 main">
+          <div class="card animate__animated  animate__zoomIn ml-3 card" style="width: 18rem;" data-price="<%= listing.price %>">
+            <img src="<%= listing.image.url %>" class="card-img-top mt-2" alt="...">
+            <div class="card-body bg-black text-light h6 ">
+              <h5 class="card-title text-warning"><%= listing.title %></h5>
+              <p class="card-text text-light"><%= listing.description %></p>
+              <p class="card-text text-light">$<%= listing.price %></p>
+              <p class="card-text text-light cat" style="display: none;"><%= listing.category %></p>
+              <% if(currUser){ %>
+              <button type="button" class="btn btn-dark mr-2 plus-btn"><i class="fa-solid fa-plus"></i></button>
+              <span class="quantity">0</span>
+              <button type="button" class="btn btn-dark ml-2 minus-btn"><i class="fa-solid fa-minus"></i></button>
+                <% } %>
+              <% if (email === "mohitkhandelwal579@gmail.com") { %>
+                <form method="POST" action="/menu/<%= listing._id %>?_method=DELETE" style="display:inline-block">
+                  <button class="btn btn-danger">Delete</button>
+                </form>
+              <% } %>
+
+              <% if (email === "mohitkhandelwal579@gmail.com") { %>
+                <a href="/menu/<%= listing._id %>" class="btn btn-success">Edit</a>
+              <% } %>
+
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky bar at the bottom -->
+  <div class="sticky-bar" id="stickyBar">
+    <div class="img-container">
+        <img src="" alt="">
+    </div>
+    
+    <form action="/add" method="post">
+        <input type="text" id="inp" style="display: none;" name="total">
+        <input type="text" id="inp1" style="display: none;" name="quantity">
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+    Total: <span id="totalValue">$0.00</span>
+    <button class="btn btn-success " >Add to Cart</button>
+</form>
+  </div>
+
+  <script>
+    
+  let chooseElements = document.getElementsByClassName("choose");
+  for (let i = 0; i < chooseElements.length; i++) {
+    
+    // Add a click event listener to each element
+    chooseElements[i].addEventListener("click", () => {
+      // Access the inner text of the clicked element
+      let clickedText = chooseElements[i].innerText;
+      let choosecard = document.getElementsByClassName("cat");
+      let card = document.getElementsByClassName("main");
+      console.log("hhgw");
+      for (let j = 0; j < choosecard.length; j++) {
+        if (choosecard[j].innerText !== clickedText) {
+          card[j].style.display = "none";
+        } else {
+          card[j].style.display = "inline";
+        }
+      }
+    });
+  }
+
+    // Existing JavaScript code
+    let total = 0;
+    let qq=0;
+    function addToTotal(price, quantityElement,val) {
+      total += price;
+      qq++;
+      updateTotal();
+      updateQuantity(quantityElement, 1);
+    }
+
+    function subtractFromTotal(price, quantityElement,val) {
+      if (total >= price) {
+        total -= price;
+        qq--;
+        updateTotal();
+        updateQuantity(quantityElement, -1);
+      }
+    }
+
+    function updateTotal() {
+      document.getElementById("totalValue").innerText = `${total.toFixed(2)}`;
+      document.getElementById("inp").value = `${total.toFixed(2)}`;
+      document.getElementById("inp1").value = `${qq}`;
+      toggleStickyBarVisibility();
+    }
+
+    function updateQuantity(quantityElement, increment) {
+      let currentQuantity = parseInt(quantityElement.innerText, 10);
+      currentQuantity += increment;
+      if (currentQuantity < 0) {
+        currentQuantity = 0;
+      }
+      quantityElement.innerText = currentQuantity;
+    }
+
+    // Toggle sticky bar visibility
+    function toggleStickyBarVisibility() {
+      const stickyBar = document.getElementById("stickyBar");
+      stickyBar.style.display = total > 0 ? "block" : "none";
+    }
+
+    // Event listeners
+    document.addEventListener("DOMContentLoaded", function () {
+  const plusButtons = document.querySelectorAll('.plus-btn');
+  const minusButtons = document.querySelectorAll('.minus-btn');
+  const quantityElements = document.querySelectorAll('.quantity');
+
+  plusButtons.forEach(function (button, index) {
+    button.addEventListener("click", function () {
+      const price = parseFloat(button.closest('.card').dataset.price);
+      const quantityElement = quantityElements[index];
+      addToTotal(price, quantityElement);
+    });
+  });
+
+  minusButtons.forEach(function (button, index) {
+    button.addEventListener("click", function () {
+      const price = parseFloat(button.closest('.card').dataset.price);
+      const quantityElement = quantityElements[index];
+      subtractFromTotal(price, quantityElement);
+    });
+  });
+});
+    
+  </script>
