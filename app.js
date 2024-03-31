@@ -5,7 +5,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 require('dotenv').config();
-const dbUrl = "mongodb://localhost:27017/xyz"; // Replace with your actual database URL
+const dbUrl = "mongodb+srv://mohitkhandelwal290:WRTm8Km2L0LfXrdC@cluster0.us2md44.mongodb.net/?retryWrites=true&w=majority"; // Replace with your actual database URL
 const Listing = require("./models/listing.js");
 const Ambulance = require("./models/amb.js");
 const user = require("./models/user.js");
